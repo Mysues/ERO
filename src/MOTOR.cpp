@@ -66,17 +66,17 @@ void MOTOR::backward(int speed)
 	run();
 }
 
-void MOTOR::left(int speed)
-{
-	motor_left(-speed);
-	motor_right(speed);
-	run();
-}
-
-void MOTOR::right(int speed)
+void MOTOR::turnLeft(int speed)
 {
 	motor_left(speed);
 	motor_right(-speed);
+	run();
+}
+
+void MOTOR::turnRight(int speed)
+{
+	motor_left(-speed);
+	motor_right(speed);
 	run();
 }
 
@@ -101,7 +101,7 @@ void MOTOR::drive(double heading, int speed, int gain)
 
 void MOTOR::motor_left(int speed)
 {
-	speed = constrain(speed, -150, 150);
+	speed = constrain(speed, -255, 255);
 
 	if (speed > 0)
 	{
@@ -123,7 +123,7 @@ void MOTOR::motor_left(int speed)
 
 void MOTOR::motor_right(int speed)
 {
-	speed = constrain(speed, -150, 150);
+	speed = constrain(speed, -255, 255);
 
 	if (speed > 0)
 	{
