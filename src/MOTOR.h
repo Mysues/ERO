@@ -35,8 +35,8 @@ public:
 
 	void forward(int speed);
 	void backward(int speed);
-	void left(int speed);
-	void right(int speed);
+	void turnLeft(int speed);
+	void turnRight(int speed);
 	void stop();
 
 	void drive(double heading, int speed, int gain);
