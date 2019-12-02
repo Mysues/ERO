@@ -25,6 +25,9 @@ public:
     int speedCtrl(void);
 
     void forward(int speed);
+    void backward(int speed);
+    void turnLeft(int speed);
+    void turnRight(int speed);
 
     void test();
 };
