@@ -37,7 +37,6 @@ void ERO::leftSignal(String mode)
 
     else if (mode.compareTo("OFF"))
         digitalWrite(_signalPin[0], LOW);
-
 }
 
 void ERO::rightSignal(String mode)
@@ -48,21 +47,42 @@ void ERO::rightSignal(String mode)
 
     else if (mode.compareTo("OFF"))
         digitalWrite(_signalPin[1], LOW);
-
 }
 
 int ERO::speedCtrl(void)
 {
     int result = analogRead(_speedCtrlPin);
-    result = map(result,0,1023,0,100);
-    return(result);
+    result = map(result, 0, 1023, 0, 100);
+    return (result);
 }
 
-void ERO::forward(int speed){
-    EROmotor.backward(speed);
+void ERO::forward(int speed)
+{
+    double motorSpeed = 2.55 * speed;
+    EROmotor.forward(motorSpeed);
+}
+
+void ERO::backward(int speed)
+{
+    double motorSpeed = 2.55 * speed;
+    
+    EROmotor.backward(motorSpeed);
+}
+
+void ERO::turnLeft(int speed)
+{
+    double motorSpeed = 2.55 * speed;
+    EROmotor.turnLeft(motorSpeed);
+}
+
+void ERO::turnRight(int speed)
+{
+    double motorSpeed = 2.55 * speed;
+    
+    EROmotor.turnRight(motorSpeed);
 }
 
 void ERO::test()
 {
-    forward(100);
+
 }
