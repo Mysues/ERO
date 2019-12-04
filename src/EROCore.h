@@ -35,7 +35,6 @@ public:
     void turnLeft(int speed);
     void turnRight(int speed);
 
-    void test();
 };
 
 
