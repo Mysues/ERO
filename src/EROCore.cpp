@@ -29,6 +29,49 @@ void ERO::begin()
     EROmotor.begin(_motorPin);
 }
 
+void ERO::beeper(String mode, unsigned long intervalMs)
+{
+    unsigned long iWhile = 0;
+    unsigned long pMillis = 0;
+    unsigned long pFlipMillis = 0;
+    pMillis = millis();
+    bool loopState=1;
+    if (mode.equals("ON"))
+    {
+
+        while (loopState)
+        {
+            unsigned long cMillis = millis();
+            unsigned long iFlip = cMillis - pFlipMillis;
+            if (iFlip > 70)
+            {
+                flip();
+                pFlipMillis = cMillis;
+            }
+
+            if(cMillis - pMillis > intervalMs)
+                loopState = false;
+        }
+    }
+    else if (mode.equals("OFF"))
+    {
+        digitalWrite(_beeperPin, LOW);
+        while (loopState)
+        {
+            unsigned long cMillis = millis();
+
+            if(cMillis - pMillis > intervalMs)
+                loopState = false;
+        }
+    }
+}
+
+void ERO::flip()
+{
+    sBeeper = !sBeeper;
+    digitalWrite(_beeperPin, sBeeper);
+}
+
 void ERO::leftSignal(String mode)
 {
 
@@ -65,7 +108,7 @@ void ERO::forward(int speed)
 void ERO::backward(int speed)
 {
     double motorSpeed = 2.55 * speed;
-    
+
     EROmotor.backward(motorSpeed);
 }
 
@@ -83,5 +126,4 @@ void ERO::turnRight(int speed)
 
 void ERO::test()
 {
-
 }

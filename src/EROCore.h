@@ -14,10 +14,16 @@ private:
     int _beeperPin;
     int _speedCtrlPin;
     MOTOR EROmotor;
+
+    bool sBeeper;
+
+    void flip();
     
 public:
     ERO(int* motorPin,int* signalPin,int beeperPin, int speedCtrlPin);
     void begin(void);
+
+    void beeper(String mode, unsigned long intervalMs);
 
     void leftSignal(String mode);
     void rightSignal(String mode);
