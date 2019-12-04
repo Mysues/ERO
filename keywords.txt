@@ -1,0 +1,39 @@
+#######################################
+# Syntax Coloring Map
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+ERO	KEYWORD1
+EROBLE	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+beeper	KEYWORD2
+
+leftSignal	KEYWORD2
+rightSignal	KEYWORD2
+
+speedCtrl	KEYWORD2
+
+forward	KEYWORD2
+backward	KEYWORD2
+turnLeft	KEYWORD2
+turnRight	KEYWORD2
+
+process	KEYWORD2
+
+######################################
+# Constants (LITERAL1)
+#######################################
+GamePad LITERAL1
+######################################
+# Build-in Variable (LITERAL2)
+#######################################
+ON	LITERAL2
+OFF	LITERAL2
+
