@@ -23,7 +23,9 @@ public:
     ERO(int* motorPin,int* signalPin,int beeperPin, int speedCtrlPin);
     void begin(void);
 
-    void beeper(String mode, unsigned long intervalMs);
+    void beeperMs(String mode, unsigned long intervalMs);
+
+    void beeper(String mode, unsigned long intervalSec);
 
     void leftSignal(String mode);
     void rightSignal(String mode);
@@ -34,6 +36,8 @@ public:
     void backward(int speed);
     void turnLeft(int speed);
     void turnRight(int speed);
+
+    void stop();
 
 };
 
