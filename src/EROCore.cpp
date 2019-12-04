@@ -1,4 +1,4 @@
-#include "ERO.h"
+#include "EROCore.h"
 
 ERO::ERO(int *motorPin, int *signalPin, int beeperPin, int speedCtrlPin)
 {
@@ -78,7 +78,6 @@ void ERO::turnLeft(int speed)
 void ERO::turnRight(int speed)
 {
     double motorSpeed = 2.55 * speed;
-    
     EROmotor.turnRight(motorSpeed);
 }
 
