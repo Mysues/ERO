@@ -5,21 +5,21 @@ This repo is dedicated for ERO library. ERO is stand for Easy Robotic, as the na
 ## Constructor
 ERO::ERO(int* motorPin,int* signalPin,int beeperPin, int speedCtrlPin)
 Method
-void begin(void) // to setup pin of ERO Shield
-void beeperMs(String mode, unsigned long intervalMs) // produce beeping sound for interval of milliseconds
-void beeper(String mode, unsigned long intervalSec)  // produce beeping sound for interval of second
+void begin(void)
+void beeperMs(String mode, unsigned long intervalMs)
+void beeper(String mode, unsigned long intervalSec)
 
-void leftSignal(String mode); // control the LED of leftSignal. “ON” to turn on the led and “OFF” to turn off the led
-void rightSignal(String mode);// control the LED of rightSignal. “ON” to turn on the led and “OFF” to turn off the led
+void leftSignal(String mode)
+void rightSignal(String mode)
 
-int speedCtrl(void) //get the return value of the potentiometer MAX 100 and Min 0. This function use map to convert 0-1023 to 0 – 100.
+int speedCtrl(void)
 
-void forward(int speed); // to move the robot forward
-void backward(int speed); // to move the robot backward
-void turnLeft(int speed); // turn the robot to the left
-void turnRight(int speed); // turn the robot to the right
+void forward(int speed); 
+void backward(int speed);
+void turnLeft(int speed); 
+void turnRight(int speed); 
 
-void stop(); //stop left and right motor
+void stop(); 
 
 
 # Module Structure (ERO.h →  Common.h → Module.h)
