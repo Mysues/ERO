@@ -4,7 +4,8 @@ This repo is dedicated for ERO library. ERO is stand for Easy Robotic, as the na
 # EROCore CLASS (ERO.h)
 ## Constructor
 ERO::ERO(int* motorPin,int* signalPin,int beeperPin, int speedCtrlPin)
-Method
+
+## Method
 void begin(void)
 void beeperMs(String mode, unsigned long intervalMs)
 void beeper(String mode, unsigned long intervalSec)
