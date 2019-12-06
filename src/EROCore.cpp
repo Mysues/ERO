@@ -48,7 +48,7 @@ void ERO::beeperMs(String mode, unsigned long intervalMs)
         {
             unsigned long cMillis = millis();
             unsigned long iFlip = cMillis - pFlipMillis;
-            if (iFlip > 70)
+            if (iFlip > 0)
             {
                 flip();
                 pFlipMillis = cMillis;
@@ -81,20 +81,20 @@ void ERO::flip()
 void ERO::leftSignal(String mode)
 {
 
-    if (mode.compareTo("ON"))
+    if (mode.compareTo("OFF"))
         digitalWrite(_signalPin[0], HIGH);
 
-    else if (mode.compareTo("OFF"))
+    else if (mode.compareTo("ON"))
         digitalWrite(_signalPin[0], LOW);
 }
 
 void ERO::rightSignal(String mode)
 {
 
-    if (mode.compareTo("ON"))
+    if (mode.compareTo("OFF"))
         digitalWrite(_signalPin[1], HIGH);
 
-    else if (mode.compareTo("OFF"))
+    else if (mode.compareTo("ON"))
         digitalWrite(_signalPin[1], LOW);
 }
 
