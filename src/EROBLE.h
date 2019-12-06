@@ -22,6 +22,7 @@ public:
     void write(uint8_t byte);
 
     virtual int available();
+    virtual int read();
 
     void process();
 
