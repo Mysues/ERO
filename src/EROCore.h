@@ -39,6 +39,8 @@ public:
 
     void stop();
 
+    void taskFinish(void);
+
 };
 
 
