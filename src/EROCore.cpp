@@ -138,7 +138,7 @@ void ERO::stop()
 
 void ERO::taskFinish()
 {
-    beeper(OFF, 1);
+    beeper("ON", 1);
     leftSignal("OFF");
     rightSignal("OFF");
     EROmotor.stop();
