@@ -169,10 +169,10 @@ void ERO::stop()
 
 void ERO::taskFinish()
 {
+    EROmotor.stop();
     beeper("ON", 1);
     leftSignal("OFF");
     rightSignal("OFF");
-    EROmotor.stop();
     while (1)
         ;
 }
