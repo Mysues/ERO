@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 #include "MOTOR.h"
+#include "PinEro.h"
 
 class ERO
 {
@@ -20,7 +21,9 @@ private:
     void flip();
     
 public:
+    ERO();
     ERO(int* motorPin,int* signalPin,int beeperPin, int speedCtrlPin);
+    void begin(PinERO myEro);
     void begin(void);
 
     void beeperMs(String mode, unsigned long intervalMs);

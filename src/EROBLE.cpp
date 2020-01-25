@@ -1,9 +1,18 @@
 #include "EROBLE.h"
 
+EROBLE::EROBLE(){
+    
+}
 
 EROBLE::EROBLE(int pinRX,int pinTX, GamePadModule *GamePadAdd){
     EROSerial = new SoftwareSerial(pinRX,pinTX);
     GamePadBLE = GamePadAdd;
+}
+
+void EROBLE::begin(PinERO myEro, GamePadModule *GamePadAdd, int baudrate){
+    EROSerial = new SoftwareSerial(myEro.rx,myEro.tx);
+    GamePadBLE = GamePadAdd;
+    begin(baudrate);
 }
 
 void EROBLE::begin(int baudrate){

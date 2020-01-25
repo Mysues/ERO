@@ -4,6 +4,7 @@
 #include <Arduino.h>
 #include <SoftwareSerial.h>
 #include "Module.h"
+#include "PinEro.h"
 
 
 class EROBLE
@@ -16,8 +17,10 @@ private:
     int sizeData;
 
 public:
+    EROBLE();
     EROBLE(int pinRX,int pinTX,GamePadModule *GamePadAdd);
 
+    void begin(PinERO myEro, GamePadModule *GamePadAdd, int baudrate);
     void begin(int baudrate);
     void write(uint8_t byte);
 

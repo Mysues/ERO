@@ -1,5 +1,7 @@
 #include "EROCore.h"
+ERO::ERO(){
 
+}
 ERO::ERO(int *motorPin, int *signalPin, int beeperPin, int speedCtrlPin)
 {
     motorPinSize = sizeof(_motorPin) / sizeof(int);
@@ -12,6 +14,35 @@ ERO::ERO(int *motorPin, int *signalPin, int beeperPin, int speedCtrlPin)
 
     _beeperPin = beeperPin;
     _speedCtrlPin = speedCtrlPin;
+}
+
+void ERO::begin(PinERO myEro)
+{
+    int myMotorPin[6] = {
+        myEro.L_In1,
+        myEro.L_In2,
+        myEro.L_Speed,
+        myEro.R_In1,
+        myEro.R_In2,
+        myEro.R_Speed
+    };
+    int mySignalPin[2] = {
+        myEro.L_Signal,
+        myEro.R_Signal
+    };
+
+    motorPinSize = sizeof(myMotorPin) / sizeof(int);
+    signalPinSize = sizeof(mySignalPin) / sizeof(int);
+    for (int i = 0; i < motorPinSize; i++){
+        _motorPin[i] = myMotorPin[i];
+    }
+
+    for (int i = 0; i < signalPinSize; i++)
+        _signalPin[i] = mySignalPin[i];
+
+    _beeperPin = myEro.beeper;
+    _speedCtrlPin = myEro.speedCtrl;
+    begin();
 }
 
 void ERO::begin()
@@ -142,5 +173,6 @@ void ERO::taskFinish()
     leftSignal("OFF");
     rightSignal("OFF");
     EROmotor.stop();
-    while (1);
+    while (1)
+        ;
 }
