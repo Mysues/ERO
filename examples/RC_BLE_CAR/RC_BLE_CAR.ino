@@ -1,6 +1,6 @@
 #include <ERO.h>
 #include <EROBLE.h>
-#include "Hardware.h"
+#include <EROHardware.h>
 
 ERO BoBot(motorPin, signalPin, BEEPER, SPEED_CTRL);
 EROBLE ble(RX_PIN, TX_PIN, &GamePad);
@@ -14,18 +14,21 @@ void setup()
 
 void loop()
 {
-  if(ble.available()>7)
+  if (ble.available() > 7)
   {
     ble.process();
   }
 
-  if(GamePad.UP){
+  if (GamePad.UP)
+  {
     BoBot.forward(50);
   }
-  else if(GamePad.DOWN){
+  else if (GamePad.DOWN)
+  {
     BoBot.backward(50);
   }
-  else{
+  else
+  {
     BoBot.stop();
   }
 }

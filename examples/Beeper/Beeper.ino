@@ -1,5 +1,5 @@
 #include <ERO.h>
-#include "Hardware.h"
+#include <EROHardware.h>
 
 ERO BoBot(motorPin, signalPin, BEEPER, SPEED_CTRL);
 
@@ -10,7 +10,7 @@ void setup()
 
 void loop()
 {
-    BoBot.beeper("ON",1);
+    BoBot.beeper("ON", 1);
 
-    BoBot.beeper("OFF",1);
+    BoBot.beeper("OFF", 1);
 }

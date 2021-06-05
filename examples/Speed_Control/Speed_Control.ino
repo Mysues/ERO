@@ -1,11 +1,11 @@
 #include <ERO.h>
-#include "Hardware.h"
+#include <EROHardware.h>
 
 ERO BoBot(motorPin, signalPin, BEEPER, SPEED_CTRL);
 
 void setup()
 {
-    BoBot.begin();
+  BoBot.begin();
 }
 
 void loop()
