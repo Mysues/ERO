@@ -1,4 +1,5 @@
 #pragma once
+#include <PinEro.h>
 
 #define LEFT_IN1 3
 #define LEFT_IN2 4
@@ -28,3 +29,5 @@ int motorPin[] = {
 int signalPin[] = {
     LEFT_SIGNAL,
     RIGHT_SIGNAL};
+
+PinERO EROHardware(motorPin, signalPin, BEEPER, SPEED_CTRL, TX_PIN, RX_PIN);
