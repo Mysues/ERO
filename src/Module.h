@@ -1,7 +1,8 @@
 #ifndef Module
 #define Module
 
-typedef struct GamePadModule{
+typedef struct GamePadModule
+{
     int data;
 
     bool UP = 0;
@@ -9,6 +10,17 @@ typedef struct GamePadModule{
     bool LEFT = 0;
     bool RIGHT = 0;
 
+    bool UP_LEFT = 0;
+    bool UP_RIGHT = 0;
+    bool DOWN_LEFT = 0;
+    bool DOWN_RIGHT = 0;
+
+    bool MOTOR_STOP = 0;
+
+    bool BACK_LIGHT = 0;
+    bool HORN = 0;
+
+    //Extra Button for new joystick
     bool CROSS = 0;
     bool SQUARE = 0;
     bool CIRCLE = 0;
@@ -16,7 +28,6 @@ typedef struct GamePadModule{
 
     bool SELECT = 0;
     bool START = 0;
-
 };
 
 #endif
