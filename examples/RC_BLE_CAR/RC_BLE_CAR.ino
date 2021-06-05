@@ -2,8 +2,8 @@
 #include <EROBLE.h>
 #include <EROHardware.h>
 
-ERO BoBot(motorPin, signalPin, BEEPER, SPEED_CTRL);
-EROBLE ble(RX_PIN, TX_PIN, &GamePad);
+ERO BoBot(&EROHardware);
+EROBLE ble(&EROHardware, &GamePad);
 
 void setup()
 {

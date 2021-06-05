@@ -1,7 +1,7 @@
 #include <ERO.h>
-#include "Hardware.h"
+#include <EROHardware.h>
 
-ERO __ERONAME__ (__MotorPinArray__, __SignalPinArray__, __BUZZERPIN__, _SPEED_CTRLPIN_);
+ERO __ERONAME__(__ &EROHardware_);
 
 void setup()
 {

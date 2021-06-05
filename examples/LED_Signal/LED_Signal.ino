@@ -1,7 +1,7 @@
 #include <ERO.h>
 #include <EROHardware.h>
 
-ERO BoBot(motorPin, signalPin, BEEPER, SPEED_CTRL);
+ERO BoBot(&EROHardware);
 
 void setup()
 {
