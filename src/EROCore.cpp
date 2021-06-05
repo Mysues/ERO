@@ -1,6 +1,6 @@
 #include "EROCore.h"
-ERO::ERO(){
-
+ERO::ERO()
+{
 }
 ERO::ERO(int *motorPin, int *signalPin, int beeperPin, int speedCtrlPin)
 {
@@ -24,16 +24,15 @@ void ERO::begin(PinERO myEro)
         myEro.L_Speed,
         myEro.R_In1,
         myEro.R_In2,
-        myEro.R_Speed
-    };
+        myEro.R_Speed};
     int mySignalPin[2] = {
         myEro.L_Signal,
-        myEro.R_Signal
-    };
+        myEro.R_Signal};
 
     motorPinSize = sizeof(myMotorPin) / sizeof(int);
     signalPinSize = sizeof(mySignalPin) / sizeof(int);
-    for (int i = 0; i < motorPinSize; i++){
+    for (int i = 0; i < motorPinSize; i++)
+    {
         _motorPin[i] = myMotorPin[i];
     }
 
@@ -58,6 +57,33 @@ void ERO::begin()
 
     pinMode(_beeperPin, OUTPUT);
     EROmotor.begin(_motorPin);
+}
+
+void ERO::beeper(String mode)
+{
+    if (mode.equals("ON"))
+    {
+        beepOn = true;
+    }
+    else
+    {
+        beepOn = false;
+        digitalWrite(_beeperPin, LOW);
+    }
+}
+
+void ERO::buzzer()
+{
+    if (beepOn)
+    {
+        unsigned long cMillis = millis();
+        unsigned long iFlip = cMillis - pMillis;
+        if (iFlip > 0)
+        {
+            flip();
+            pMillis = cMillis;
+        }
+    }
 }
 
 void ERO::beeper(String mode, unsigned long intervalSec)
