@@ -1,56 +1,26 @@
-#ifndef PERO
-#define PERO
-#include <Arduino.h>
+#pragma once
 
-typedef struct _Pin{
-    int L_In1 = 3;
-    int L_In2 = 4;
-    int L_Speed = 5;
-    int R_In1 = 7;
-    int R_In2 = 2;
-    int R_Speed = 6;
+struct PinERO
+{
+    PinERO() {}
 
-    int L_Signal = 11;
-    int R_Signal = 12;
+    PinERO(int *motorPin, int *signalPin, int beeperPin, int speed_ctrlPin, int txPin, int rxPin)
+    {
+        this->motorPin = motorPin;
+        this->signalPin = signalPin;
+        this->beeperPin = beeperPin;
+        this->speed_ctrlPin = speed_ctrlPin;
 
-    int beeper = 13;
+        this->txPin = txPin;
+        this->rxPin = rxPin;
+    }
 
-    int speedCtrl = A0;
-    
-    int tx = 9;
-    int rx = 8;
+    int *motorPin;
+    int *signalPin;
 
-    void setLeftMotor(int LEFT_IN1,int LEFT_IN2,int LEFT_SPEED){
-        L_In1 = LEFT_IN1;
-        L_In2 = LEFT_IN2;
-        L_Speed = LEFT_SPEED;
-    };
+    int beeperPin;
+    int speed_ctrlPin;
 
-    void setRightMotor(int RIGHT_IN1,int RIGHT_IN2,int RIGHT_SPEED){
-        R_In1 = RIGHT_IN1;
-        R_In2 = RIGHT_IN2;
-        R_Speed = RIGHT_SPEED;
-    };
-
-    void setSignal(int LEFT_SIGNAL, int RIGHT_SIGNAL){
-        L_Signal = LEFT_SIGNAL;
-        R_Signal = RIGHT_SIGNAL;
-    };
-
-    void setBeeper(int BEEPER){
-        beeper = BEEPER;
-    };
-
-    void setPotentiometer(int SPEED_CTRL){
-        speedCtrl = SPEED_CTRL;        
-    };
-
-    void setSoftwareSerial(int TX_PIN, int RX_PIN){
-        tx = TX_PIN;
-        rx = RX_PIN;
-    };
-
-
-} PinERO;
-
-#endif
+    int txPin;
+    int rxPin;
+};
