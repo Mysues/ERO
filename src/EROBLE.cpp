@@ -4,21 +4,15 @@ EROBLE::EROBLE()
 {
 }
 
-EROBLE::EROBLE(int pinRX, int pinTX, GamePadModule *GamePadAdd)
+EROBLE::EROBLE(PinERO *pinERO, GamePadModule *GamePadAdd)
 {
-    EROSerial = new SoftwareSerial(pinRX, pinTX);
+    this->pinERO = pinERO;
     GamePadBLE = GamePadAdd;
-}
-
-void EROBLE::begin(PinERO myEro, GamePadModule *GamePadAdd, int baudrate)
-{
-    EROSerial = new SoftwareSerial(myEro.rx, myEro.tx);
-    GamePadBLE = GamePadAdd;
-    begin(baudrate);
 }
 
 void EROBLE::begin(int baudrate)
 {
+    EROSerial = new SoftwareSerial(pinERO->rxPin, pinERO->txPin);
     EROSerial->begin(baudrate);
     sizeData = sizeof(data) / sizeof(int8_t);
 }
@@ -46,6 +40,7 @@ bool EROBLE::process()
     if (EROSerial->available() > 0)
     {
         char command = EROSerial->read();
+        bool reset = false;
         if (prevCommand != command)
         {
             switch (command)
@@ -89,6 +84,9 @@ bool EROBLE::process()
             case 'S':
                 GamePadBLE->MOTOR_STOP = 1;
                 break;
+            case 'D':
+                reset = true;
+                break;
             }
             switch (prevCommand)
             {
@@ -122,6 +120,14 @@ bool EROBLE::process()
 
             prevCommand = command;
             Serial.println(command);
+
+            if (reset)
+            {
+                GamePadBLE->HORN = 0;
+                GamePadBLE->BACK_LIGHT = 0;
+                GamePadBLE->MOTOR_STOP = 1;
+            }
+
             return true;
         }
     }

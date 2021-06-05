@@ -8,8 +8,10 @@
 class ERO
 {
 private:
-    int motorPinSize;
-    int signalPinSize;
+    PinERO *pinERO;
+
+    int motorPinSize = 6;
+    int signalPinSize = 2;
     int _motorPin[6];
     int _signalPin[2];
     int _beeperPin;
@@ -24,8 +26,10 @@ private:
 
 public:
     ERO();
-    ERO(int *motorPin, int *signalPin, int beeperPin, int speedCtrlPin);
-    void begin(PinERO myEro);
+    ERO(PinERO *pinERO);
+
+    void setPin(int *motorPin, int *signalPin, int beeperPin, int speedCtrlPin);
+
     void begin(void);
 
     void beeperMs(String mode, unsigned long intervalMs);

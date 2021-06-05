@@ -2,10 +2,14 @@
 ERO::ERO()
 {
 }
-ERO::ERO(int *motorPin, int *signalPin, int beeperPin, int speedCtrlPin)
+
+ERO::ERO(PinERO *pinERO)
 {
-    motorPinSize = sizeof(_motorPin) / sizeof(int);
-    signalPinSize = sizeof(_signalPin) / sizeof(int);
+    this->pinERO = pinERO;
+}
+
+void ERO::setPin(int *motorPin, int *signalPin, int beeperPin, int speedCtrlPin)
+{
     for (int i = 0; i < motorPinSize; i++)
         _motorPin[i] = motorPin[i];
 
@@ -16,36 +20,10 @@ ERO::ERO(int *motorPin, int *signalPin, int beeperPin, int speedCtrlPin)
     _speedCtrlPin = speedCtrlPin;
 }
 
-void ERO::begin(PinERO myEro)
-{
-    int myMotorPin[6] = {
-        myEro.L_In1,
-        myEro.L_In2,
-        myEro.L_Speed,
-        myEro.R_In1,
-        myEro.R_In2,
-        myEro.R_Speed};
-    int mySignalPin[2] = {
-        myEro.L_Signal,
-        myEro.R_Signal};
-
-    motorPinSize = sizeof(myMotorPin) / sizeof(int);
-    signalPinSize = sizeof(mySignalPin) / sizeof(int);
-    for (int i = 0; i < motorPinSize; i++)
-    {
-        _motorPin[i] = myMotorPin[i];
-    }
-
-    for (int i = 0; i < signalPinSize; i++)
-        _signalPin[i] = mySignalPin[i];
-
-    _beeperPin = myEro.beeper;
-    _speedCtrlPin = myEro.speedCtrl;
-    begin();
-}
-
 void ERO::begin()
 {
+    setPin(pinERO->motorPin, pinERO->signalPin, pinERO->beeperPin, pinERO->speed_ctrlPin);
+
     for (int i = 0; i < motorPinSize; i++)
     {
         if (i == 2 || i == 5)

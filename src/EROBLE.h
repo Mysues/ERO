@@ -11,15 +11,15 @@ class EROBLE
 private:
     SoftwareSerial *EROSerial;
     GamePadModule *GamePadBLE;
+    PinERO *pinERO;
     int8_t data[8];
     int sizeData;
     char prevCommand = 'S';
 
 public:
     EROBLE();
-    EROBLE(int pinRX, int pinTX, GamePadModule *GamePadAdd);
+    EROBLE(PinERO *pinERO, GamePadModule *GamePadAdd);
 
-    void begin(PinERO myEro, GamePadModule *GamePadAdd, int baudrate);
     void begin(int baudrate);
     void write(uint8_t byte);
 
