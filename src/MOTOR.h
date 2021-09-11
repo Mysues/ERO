@@ -26,6 +26,7 @@ private:
 	int SpeedR;
 	bool DirL_C;
 	bool DirR_C;
+	float speedRatio = 1;
 
 public:
 	MOTOR(int *pin, bool DirL=true, bool DirR=true);
@@ -38,6 +39,8 @@ public:
 	void turnLeft(int speed);
 	void turnRight(int speed);
 	void stop();
+
+	void changeSpeedRatio(float ratio) {speedRatio = ratio;} ;
 
 	void drive(double heading, int speed, int gain);
 
