@@ -53,38 +53,33 @@ void MOTOR::begin(int *pin)
 
 void MOTOR::forward(int speed)
 {
-	
+
 	motor_left(speed);
 	motor_right(speed);
-	run();
 }
 
 void MOTOR::backward(int speed)
 {
 	motor_left(-speed);
 	motor_right(-speed);
-	run();
 }
 
 void MOTOR::turnLeft(int speed)
 {
 	motor_left(speed);
 	motor_right(-speed);
-	run();
 }
 
 void MOTOR::turnRight(int speed)
 {
 	motor_left(-speed);
 	motor_right(speed);
-	run();
 }
 
 void MOTOR::stop()
 {
 	motor_left(0);
 	motor_right(0);
-	run();
 }
 
 void MOTOR::drive(double heading, int speed, int gain)
@@ -96,7 +91,6 @@ void MOTOR::drive(double heading, int speed, int gain)
 
 	motor_left(Lspeed);
 	motor_right(Rspeed);
-	run();
 }
 
 void MOTOR::motor_left(int speed)
@@ -169,10 +163,15 @@ void MOTOR::run(int duration, bool debug = false)
 
 void MOTOR::run()
 {
-	digitalWrite(P_LeftA, DirL_A);
-	digitalWrite(P_LeftB, DirL_B);
-	analogWrite(P_LeftSpeed, SpeedL);
-	digitalWrite(P_RightA, DirR_A);
-	digitalWrite(P_RightB, DirR_B);
-	analogWrite(P_RightSpeed, SpeedR);
+	int now = millis();
+	if (now - prev >  33)
+	{
+		digitalWrite(P_LeftA, DirL_A);
+		digitalWrite(P_LeftB, DirL_B);
+		analogWrite(P_LeftSpeed, SpeedL * speedRatio);
+		digitalWrite(P_RightA, DirR_A);
+		digitalWrite(P_RightB, DirR_B);
+		analogWrite(P_RightSpeed, SpeedR * speedRatio);
+		prev = now;
+	}
 }
