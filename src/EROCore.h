@@ -32,6 +32,10 @@ public:
 
     void begin(void);
 
+    void loop(void){
+        buzzer();
+    }
+
     void beeperMs(String mode, unsigned long intervalMs);
 
     void beeper(String mode);
