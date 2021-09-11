@@ -23,7 +23,7 @@ private:
     bool sBeeper;
 
     void flip();
-
+    
 public:
     ERO();
     ERO(PinERO *pinERO);
@@ -33,6 +33,8 @@ public:
     void begin(void);
 
     void loop(void){
+        EROmotor.changeSpeedRatio((float)speedCtrl()/100);
+        EROmotor.run();
         buzzer();
     }
 
@@ -50,6 +52,11 @@ public:
     void backward(int speed);
     void turnLeft(int speed);
     void turnRight(int speed);
+
+    void forward();
+    void backward();
+    void turnLeft();
+    void turnRight();
 
     void stop();
 

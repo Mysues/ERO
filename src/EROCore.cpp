@@ -35,6 +35,7 @@ void ERO::begin()
 
     pinMode(_beeperPin, OUTPUT);
     EROmotor.begin(_motorPin);
+    EROmotor.changeSpeedRatio((float) speedCtrl()/100);
 }
 
 void ERO::beeper(String mode)
@@ -169,6 +170,26 @@ void ERO::turnRight(int speed)
 void ERO::stop()
 {
     EROmotor.stop();
+}
+
+void ERO::forward()
+{
+    EROmotor.forward(255);
+}
+
+void ERO::backward()
+{
+    EROmotor.backward(255);
+}
+
+void ERO::turnLeft()
+{
+    EROmotor.turnLeft(255);
+}
+
+void ERO::turnRight()
+{
+    EROmotor.turnRight(255);
 }
 
 void ERO::taskFinish()
