@@ -35,7 +35,7 @@ void ERO::begin()
 
     pinMode(_beeperPin, OUTPUT);
     EROmotor.begin(_motorPin);
-    EROmotor.changeSpeedRatio((float) speedCtrl()/100);
+    EROmotor.changeSpeedRatio(1);
 }
 
 void ERO::beeper(String mode)
@@ -80,7 +80,7 @@ void ERO::beeperMs(String mode, unsigned long intervalMs)
     bool loopState = 1;
     if (mode.equals("ON"))
     {
-
+        Serial.println("Buzzer On");
         while (loopState)
         {
             unsigned long cMillis = millis();
