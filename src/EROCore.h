@@ -38,6 +38,11 @@ public:
         buzzer();
     }
 
+    void end(){
+        stop();
+        while(1);
+    }
+
     void beeperMs(String mode, unsigned long intervalMs);
 
     void beeper(String mode);
