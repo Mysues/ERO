@@ -51,6 +51,14 @@ public:
 	void run(int duration,bool debug=false);
 private:
 
+	void updateMotorState(){
+		digitalWrite(P_LeftA, DirL_A);
+		digitalWrite(P_LeftB, DirL_B);
+		analogWrite(P_LeftSpeed, SpeedL * speedRatio);
+		digitalWrite(P_RightA, DirR_A);
+		digitalWrite(P_RightB, DirR_B);
+		analogWrite(P_RightSpeed, SpeedR * speedRatio);
+	}
 
 };
 
